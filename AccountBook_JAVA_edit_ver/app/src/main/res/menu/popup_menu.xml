@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_LogIn"
+        android:title="Log In" />
+    <item
+        android:id="@+id/menu_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/menu_calendar"
+        android:title="월간 소비 달력" />
+    <item
+        android:id="@+id/menu_fixed_expenses"
+        android:title="고정 지출 &amp; 수입 입력" />
+    <item
+        android:id="@+id/menu_inquiries"
+        android:title="문의 사항" />
+</menu>

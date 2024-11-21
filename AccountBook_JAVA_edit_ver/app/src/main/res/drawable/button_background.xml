@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 그림자 효과를 위한 레이어 -->
+    <item android:right="2dp" android:left="2dp" android:top="2dp" android:bottom="2dp">
+        <shape>
+            <solid android:color="#BDBDBD" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- 실제 버튼 배경 레이어 -->
+    <item>
+        <shape>
+            <solid android:color="#DEDEDE" />
+            <stroke android:width="1dp" android:color="#D3D3D3" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</layer-list>
