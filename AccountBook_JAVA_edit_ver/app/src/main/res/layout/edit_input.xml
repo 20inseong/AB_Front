@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Toggle Button (지출/수입) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <!-- 왼쪽 텍스트 -->
+        <TextView
+            android:id="@+id/toggle_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="#4A4A4A" />
+
+        <!-- 오른쪽 Switch -->
+        <Switch
+            android:id="@+id/toggle_income_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="수입"
+            android:textOff="지출"
+            android:showText="false"
+            android:minWidth="100dp"
+            android:minHeight="48dp" />
+    </LinearLayout>
+
+
+
+
+    <!-- 날짜 -->
+    <TextView
+        android:id="@+id/test_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="날짜"
+        android:textSize="16sp"
+        android:textColor="#4A4A4A" />
+
+    <EditText
+        android:id="@+id/date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="(2024.11.21)"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:inputType="text" />
+
+    <!-- 금액 및 내용 작성 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="내용"
+        android:textSize="16sp"
+        android:textColor="#4A4A4A" />
+
+    <EditText
+        android:id="@+id/input_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="(금액)"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/input_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="(상품명, 가게명 etc)"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:inputType="text" />
+</LinearLayout>
