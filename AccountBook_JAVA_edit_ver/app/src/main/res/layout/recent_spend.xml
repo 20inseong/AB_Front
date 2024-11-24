@@ -30,6 +30,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/spend_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24/11/01"
@@ -37,12 +38,21 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/spend_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="50,000원"
                 android:textColor="#757575"
                 android:textSize="12sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/spend_description"
+            android:layout_width="250dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="점심식사 비용" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,26 +72,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/manual_button" />
 
+
         <!-- 최근 기록 내역 카드 -->
-        <include
-            layout="@layout/recent_income"
-            android:id="@+id/recent_income_layout"
+        <LinearLayout
+            android:id="@+id/recent_records_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/recent_records_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <include
-            layout="@layout/recent_spend"
-            android:id="@+id/recent_spend_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/recent_income_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+<!--        &lt;!&ndash; 최근 기록 내역 카드 &ndash;&gt;-->
+<!--        <include-->
+<!--            layout="@layout/recent_income"-->
+<!--            android:id="@+id/recent_income_layout1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/recent_records_title"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
+
+<!--        <include-->
+<!--            layout="@layout/recent_spend"-->
+<!--            android:id="@+id/recent_spend_layout1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/recent_income_layout1"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
+
+<!--        <include-->
+<!--            layout="@layout/recent_spend"-->
+<!--            android:id="@+id/recent_spend_layout2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/recent_spend_layout1"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
+
+<!--        <include-->
+<!--            layout="@layout/recent_spend"-->
+<!--            android:id="@+id/recent_spend_layout3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/recent_spend_layout2"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
+
+<!--        <include-->
+<!--            layout="@layout/recent_income"-->
+<!--            android:id="@+id/recent_income_layout2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/recent_spend_layout3"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
