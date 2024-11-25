@@ -18,9 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,10 +155,9 @@ public class MainActivity extends AppCompatActivity {
                         String type = toggleIncomeExpense.isChecked() ? "수입" : "지출";
 
                         Toast.makeText(MainActivity.this,
-                                "입력 완료\n유형: " + type + "\n금액: " + amount + "\n설명: " + description,
+                                "{\"유형\":\"" + type + "\""+ amount +"\"" + description + "\"}",
                                 Toast.LENGTH_SHORT).show();
 
-                        // TODO: 입력 값 처리 (DB 저장, 화면 갱신 등)
                     })
                     .setNegativeButton("취소", (dialog, which) -> dialog.dismiss())
                     .show();

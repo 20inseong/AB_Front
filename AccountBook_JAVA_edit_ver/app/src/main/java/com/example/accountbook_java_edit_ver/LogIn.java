@@ -2,10 +2,12 @@ package com.example.accountbook_java_edit_ver;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
@@ -43,5 +45,21 @@ public class LogIn extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        LogInButton();
+    }
+
+    private void LogInButton(){
+        Button log_in_button = findViewById(R.id.login_button);
+        EditText IDInput = findViewById(R.id.ID_input);
+        EditText PWInput = findViewById(R.id.password_input);
+
+        log_in_button.setOnClickListener(view -> {
+            String IDstring = IDInput.getText().toString();
+            String PWstring = PWInput.getText().toString();
+            Toast.makeText(LogIn.this,
+                    "{\"유형\":\"" + IDstring + "\""+ PWstring +"\"",
+                    Toast.LENGTH_SHORT).show();
+            });
     }
 }

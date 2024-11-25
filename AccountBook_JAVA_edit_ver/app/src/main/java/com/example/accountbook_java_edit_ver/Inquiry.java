@@ -2,10 +2,12 @@ package com.example.accountbook_java_edit_ver;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
@@ -43,5 +45,20 @@ public class Inquiry extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+        InquiryButton();
     }
+
+    private void InquiryButton(){
+        Button inquiry_button = findViewById(R.id.submit_button);
+        EditText inquiry_things = findViewById(R.id.inquiry_content);
+        EditText email_address = findViewById(R.id.email_input);
+
+        inquiry_button.setOnClickListener(view -> {
+            String inquiry_contents_string = inquiry_things.getText().toString();
+            String email_string = email_address.getText().toString();
+            String message = "{\"유형\":\"" + inquiry_contents_string + "\"" + email_string + "\"}";
+            Toast.makeText(Inquiry.this, message, Toast.LENGTH_SHORT).show();
+        });
+    }
+
 }
