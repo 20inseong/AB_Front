@@ -1,0 +1,96 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/card_background"
+    android:layout_marginBottom="8dp">
+
+    <!-- 카드 제목 및 체크박스 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="서비스"
+            android:textSize="16sp"/>
+
+        <CheckBox
+            android:id="@+id/item_checkbox"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:checked="true"/>
+    </LinearLayout>
+
+    <!-- 확장 영역 (기본 숨김) -->
+    <LinearLayout
+        android:id="@+id/details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:paddingTop="8dp">
+
+        <!-- 결제/입금 일 -->
+        <TextView
+            android:id="@+id/item_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="입금, 결제 날짜"
+            android:textSize="14sp"
+            android:paddingTop="4dp"/>
+
+        <!-- 설명 -->
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서비스 설명"
+            android:textSize="14sp"
+            android:paddingTop="4dp"/>
+
+        <!-- 금액 -->
+        <TextView
+            android:id="@+id/item_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="월 10,000원"
+            android:textSize="14sp"
+            android:paddingTop="4dp"/>
+
+        <!-- 편집 및 삭제 버튼 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:paddingTop="8dp">
+
+            <!-- 편집 버튼 -->
+            <Button
+                android:id="@+id/item_edit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="편집"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#5C24BC"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- 삭제 버튼 -->
+            <Button
+                android:id="@+id/item_delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#826EB4"
+                android:backgroundTint="#F8F8F8"
+                android:text="삭제"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

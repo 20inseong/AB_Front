@@ -1,5 +1,6 @@
 package com.example.accountbook_java_edit_ver;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout recentRecordsContainer = frameLayout.findViewById(R.id.recent_records_container);
 
         // 동적으로 뷰를 추가할 데이터 리스트
-        List<Record> recentRecords = getRecentRecords();
+        List<DetailRecords> recentRecords = getRecentRecords();
 
         // 동적으로 뷰 추가
         LayoutInflater inflater = LayoutInflater.from(this);
 
-        for (Record record : recentRecords) {
+        for (DetailRecords record : recentRecords) {
             View recordView;
 
             if (record.isin1out0()) {
@@ -133,11 +136,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 수동 추가 버튼
+        // 수동 추가로 값을 입력하면 화면에 나오는 카드들 데이터가 변화할 수 있기 때문에 서버에서 값만 따로 바꿔야 할 듯 싶다.
         Button manualButton = findViewById(R.id.manual_button);
         manualButton.setOnClickListener(view -> {
             // 팝업 창 레이아웃 불러오기
             LayoutInflater inflater = getLayoutInflater();
             View popupView = inflater.inflate(R.layout.edit_input, null);
+
+            // 팝업 내부 EditText 및 달력 관련 설정
+            EditText dateEditText = popupView.findViewById(R.id.date_text);
+
+            // 날짜 선택 이벤트 설정
+            dateEditText.setOnClickListener(v -> {
+                // 현재 날짜 가져오기
+                Calendar calendar = Calendar.getInstance();
+
+                // DatePickerDialog 띄우기
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        this,
+                        (view1, year, month, dayOfMonth) -> {
+                            // 날짜 선택 후 EditText에 설정
+                            String selectedDate = String.format(Locale.getDefault(), "%04d.%02d.%02d", year, month + 1, dayOfMonth);
+                            dateEditText.setText(selectedDate);
+                        },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                );
+
+                datePickerDialog.show();
+            });
 
             // AlertDialog 생성
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -148,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
                         EditText amountInput = popupView.findViewById(R.id.input_amount);
                         EditText descriptionInput = popupView.findViewById(R.id.input_description);
                         Switch toggleIncomeExpense = popupView.findViewById(R.id.toggle_income_expense);
-                        TextView toggleText = popupView.findViewById(R.id.toggle_text);
 
                         String amount = amountInput.getText().toString();
                         String description = descriptionInput.getText().toString();
@@ -180,46 +207,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Record 클래스 정의
-    private static class Record {
-        private boolean in1out0;
-        private String amount;
-        private String description;
-        private String date;
-
-        public Record(boolean isIncome, String amount, String description, String date) {
-            this.in1out0 = isIncome;
-            this.amount = amount;
-            this.description = description;
-            this.date = date;
-        }
-
-        public boolean isin1out0() {
-            return in1out0;
-        }
-
-        public String getAmount() {
-            return amount;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public String getDate() {
-            return date;
-        }
-    }
-
     // 예시 데이터를 가져오는 메서드
-    private List<Record> getRecentRecords() {
-        List<Record> records = new ArrayList<>();
+    private List<DetailRecords> getRecentRecords() {
+        List<DetailRecords> records = new ArrayList<>();
         // 임의의 데이터 추가
-        records.add(new Record(true, "100,000원", "월급", "24/11/02"));
-        records.add(new Record(false, "50,000원", "식비","24/11/02"));
-        records.add(new Record(false, "30,000원", "교통비","24/11/01"));
-        records.add(new Record(false, "20,000원", "쇼핑","24/11/01"));
-        records.add(new Record(true, "10,000원", "용돈","24/10/31"));
+        records.add(new DetailRecords(true, "100,000원", "월급", "24/11/02"));
+        records.add(new DetailRecords(false, "50,000원", "식비","24/11/02"));
+        records.add(new DetailRecords(false, "30,000원", "교통비","24/11/01"));
+        records.add(new DetailRecords(false, "20,000원", "쇼핑","24/11/01"));
+        records.add(new DetailRecords(true, "10,000원", "용돈","24/10/31"));
         return records;
     }
 
@@ -228,5 +224,4 @@ public class MainActivity extends AppCompatActivity {
         float density = getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
     }
-
 }

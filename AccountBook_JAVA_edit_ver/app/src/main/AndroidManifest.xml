@@ -26,7 +26,18 @@
         <activity
             android:name=".LogIn"
             android:exported="false" />
-
+        <!-- 회원가입 화면 -->
+        <activity
+            android:name=".SignUp"
+            android:exported="false" />
+        <!-- 캘린더 화면 -->
+        <activity
+            android:name=".CalendarPage"
+            android:exported="false" />
+        <!-- 고정 입출금 화면 -->
+        <activity
+            android:name=".FixedExpenses"
+            android:exported="false" />
         <!-- 문의사항 화면 -->
         <activity
             android:name=".Inquiry"

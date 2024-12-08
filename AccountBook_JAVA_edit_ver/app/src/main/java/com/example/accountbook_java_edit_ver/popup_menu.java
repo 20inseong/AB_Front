@@ -2,7 +2,6 @@ package com.example.accountbook_java_edit_ver;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
 
@@ -27,12 +26,12 @@ public class popup_menu {
         else if (itemId == R.id.menu_home) {
             intent = new Intent(context, MainActivity.class);
         }
-//        else if (itemId == R.id.menu_calendar) {
-//            intent = new Intent(context, Calendar.class);
-//        }
-//        else if (itemId == R.id.menu_fixed_expenses) {
-//            intent = new Intent(context, FixedExpenses.class);
-//        }
+        else if (itemId == R.id.menu_calendar) {
+            intent = new Intent(context, CalendarPage.class);
+        }
+        else if (itemId == R.id.menu_fixed_expenses) {
+            intent = new Intent(context, FixedExpenses.class);
+        }
         else if (itemId == R.id.menu_inquiries) {
             intent = new Intent(context, Inquiry.class);
         }

@@ -1,5 +1,6 @@
 package com.example.accountbook_java_edit_ver;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,7 @@ public class LogIn extends AppCompatActivity {
         });
 
         LogInButton();
+        SignUpButton();
     }
 
     private void LogInButton(){
@@ -57,9 +59,21 @@ public class LogIn extends AppCompatActivity {
         log_in_button.setOnClickListener(view -> {
             String IDstring = IDInput.getText().toString();
             String PWstring = PWInput.getText().toString();
+
+            //서버에 값을 보내고, 돌아온 데이터를 통해 로그인을 하게 할 것인지 아닌지를 판별한다.
+
             Toast.makeText(LogIn.this,
                     "{\"유형\":\"" + IDstring + "\""+ PWstring +"\"",
                     Toast.LENGTH_SHORT).show();
             });
+    }
+
+    private void SignUpButton(){
+        Button sign_up_button = findViewById(R.id.signup_button);
+
+        sign_up_button.setOnClickListener(view -> {
+            Intent intent = new Intent(LogIn.this, SignUp.class);
+            startActivity(intent);
+        });
     }
 }

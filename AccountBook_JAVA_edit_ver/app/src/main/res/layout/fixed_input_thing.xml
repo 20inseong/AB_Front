@@ -1,42 +1,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/edit_layout"
+    android:id="@+id/fixed_input_thing_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Toggle Button (지출/수입) -->
-    <LinearLayout
+    <!-- 제목 -->
+    <TextView
+        android:id="@+id/title_fixed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="제목"
+        android:textSize="16sp"
+        android:textColor="#4A4A4A" />
+
+    <EditText
+        android:id="@+id/fixed_title_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp">
-
-        <!-- 왼쪽 텍스트 -->
-        <TextView
-            android:id="@+id/toggle_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:textColor="#4A4A4A" />
-
-        <!-- 오른쪽 Switch -->
-        <Switch
-            android:id="@+id/toggle_income_expense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="수입"
-            android:textOff="지출"
-            android:showText="false"
-            android:minWidth="100dp"
-            android:minHeight="48dp" />
-    </LinearLayout>
+        android:hint="(입금 or 결제 내용)"
+        android:padding="16dp"
+        android:textSize="14sp" />
 
     <!-- 날짜 -->
     <TextView
-        android:id="@+id/test_text"
+        android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -44,15 +33,19 @@
         android:textSize="16sp"
         android:textColor="#4A4A4A" />
 
-    <EditText
-        android:id="@+id/date_text"
+    <!-- 날짜 선택 드롭다운 -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="(2024.11.21)"
-        android:padding="16dp"
-        android:textSize="14sp"
-        android:focusable="false"
-        android:clickable="true" />
+        android:hint="날짜 선택"
+        android:layout_marginTop="8dp">
+
+        <Spinner
+            android:id="@+id/date_input"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:spinnerMode="dropdown" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <!-- 금액 및 내용 작성 -->
@@ -65,7 +58,7 @@
         android:textColor="#4A4A4A" />
 
     <EditText
-        android:id="@+id/input_amount"
+        android:id="@+id/fixed_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="(금액)"
@@ -74,11 +67,11 @@
         android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/input_description"
+        android:id="@+id/fixed_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="(상품명, 가게명 etc)"
+        android:hint="(금액의 설명 etc)"
         android:padding="16dp"
         android:textSize="14sp"
         android:inputType="text" />

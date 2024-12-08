@@ -36,13 +36,10 @@ public class SidebarManager {
             intent = new Intent(context, LogIn.class);
         } else if (itemId == R.id.menu_home) {
             intent = new Intent(context, MainActivity.class);
-            // 주석 처리된 클래스가 생기면 추가
-            // case R.id.menu_calendar:
-            //     intent = new Intent(context, Calendar.class);
-            //     break;
-            // case R.id.menu_fixed_expenses:
-            //     intent = new Intent(context, FixedExpenses.class);
-            //     break;
+        } else if(itemId == R.id.menu_calendar) {
+            intent = new Intent(context, CalendarPage.class);
+        } else if(itemId == R.id.menu_fixed_expenses) {
+            intent = new Intent(context, FixedExpenses.class);
         } else if (itemId == R.id.menu_inquiries) {
             intent = new Intent(context, Inquiry.class);
         }

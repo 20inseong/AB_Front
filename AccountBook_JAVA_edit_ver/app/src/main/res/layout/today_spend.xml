@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/in_card_layout"
+    android:id="@+id/today_out_card"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 최근 기록 내역 카드 -->
+    <!-- 이번 달 지출 카드 -->
     <LinearLayout
-        android:id="@+id/recent_record"
+        android:id="@+id/today_out_card_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/card_background"
         android:orientation="horizontal"
         android:padding="16dp"
@@ -21,7 +21,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/blue_icon" />
+            android:src="@drawable/red_icon"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -30,23 +30,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/income_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="24/11/01"
+                android:text = "오늘의 지출"
                 android:textColor="#4A4A4A"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/income_amount"
+                android:id="@+id/today_out_card_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2,950,000원"
+                android:text="num원"
                 android:textColor="#757575"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
         </LinearLayout>
         <TextView
-            android:id="@+id/income_description"
+            android:id="@+id/today_income_description"
             android:layout_width="250dp"
             android:layout_height="38dp"
             android:layout_weight="1"
