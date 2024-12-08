@@ -1,0 +1,133 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_box"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:clickable="true"
+        android:id="@+id/wholeframe">
+        <!-- 클릭 가능한 타이틀 영역 -->
+        <LinearLayout
+            android:id="@+id/upper_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+
+            <!-- 항목 보여주기 1 -->
+            <TextView
+                android:id = "@+id/item1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="항목"
+                android:layout_marginStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        <!-- 숨겨진 내용 -->
+        <LinearLayout
+            android:id="@+id/downable_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <!--        android:visibility="gone">-->
+
+            <!-- 클릭하면 펼쳐질 내용 -->
+            <!--이미지는 나중에 처리-->
+            <ImageView
+                android:id="@+id/imageshow"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="#ffffff"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+            <!-- 항목 보여주기 2 -->
+
+            <EditText
+                android:id="@+id/item2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:inputType="text"
+                android:hint="항목 입력하기"
+                android:focusable="true"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/item3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="월 지출 입력하기 (원 단위)"
+                android:inputType="number"
+                android:layout_marginTop="3dp"/>
+
+            <EditText
+                android:id="@+id/item4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="상세 항목 입력하기"
+                android:inputType="text"
+                android:layout_marginTop="12dp"/>
+
+            <TextView
+                android:id="@+id/sendtoknow"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <android.widget.Button
+                    android:id="@+id/cancelbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/rdb_w"
+                    android:text="취소" />
+
+                <android.widget.Button
+                    android:id="@+id/addbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추가"
+                    android:background="@drawable/rdb_b"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

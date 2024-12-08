@@ -1,0 +1,3 @@
+com.example.fortest.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

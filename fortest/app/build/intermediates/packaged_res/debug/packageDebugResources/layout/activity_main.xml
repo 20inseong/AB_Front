@@ -1,0 +1,287 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/monthlyinout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월간 수입 지출"
+                android:background="@drawable/rdb_w"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:textSize="20dp"
+                android:layout_marginTop="30dp"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/monthly_outitems"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/red_icon" />
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding = "15dp">
+                    <TextView
+                        android:id="@+id/select_month_out"
+                        android:text = "n년 n월 지출"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/monthly_out_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="num원"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/monthly_initems"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/blue_icon" />
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding = "15dp">
+                    <TextView
+                        android:id="@+id/select_month_in"
+                        android:text = "n년 n월 수입"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/monthly_in_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="num원"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/weeklyinout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주간 수입 지출"
+                android:background="@drawable/rdb_w"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:textSize="20dp"
+                android:layout_marginTop="30dp"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/weekly_outitems"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/red_icon" />
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding = "15dp">
+                    <TextView
+                        android:id="@+id/select_week_out"
+                        android:text = "n년 n월 n일 주간 지출"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/weekly_out_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="num원"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/weekly_initems"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/blue_icon" />
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding = "15dp">
+                    <TextView
+                        android:id="@+id/select_week_in"
+                        android:text = "n년 n월 n일 주간 수입"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/weekly_in_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="num원"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dailyinout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="당일 기록 내역"
+                android:background="@drawable/rdb_w"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:textSize="20dp"
+                android:layout_marginTop="30dp"/>
+
+            <LinearLayout
+                android:id="@+id/dailyinoutitems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/btnbg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp">
+
+                <LinearLayout
+                    android:id="@+id/addbyreceipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rounded_box"
+                    android:layout_gravity="right"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    >
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/camera_icon"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="영수증 인식"
+                        android:textSize="24dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/addbyhand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rounded_box"
+                    android:layout_gravity="right"
+                    android:clickable="true"
+                    android:padding="3dp"
+                    >
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/edit_icon"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="수동 추가"
+                        android:textSize="24dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

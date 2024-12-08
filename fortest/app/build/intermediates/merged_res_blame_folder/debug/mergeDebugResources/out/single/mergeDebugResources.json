@@ -1,0 +1,178 @@
+[
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_calendar_day_item.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\calendar_day_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_left_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\left_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_fixed_in_out.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\fixed_in_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_warning_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\warning_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_fixed_i_o_add.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\fixed_i_o_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_rdb_w.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\rdb_w.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_rounded_box.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\rounded_box.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_edit_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\edit_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_right_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\right_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_rdb_b.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\rdb_b.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_list_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\list_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_calender_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\calender_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_check_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\check_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_item_calendar_day.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\item_calendar_day.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_icon_round.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\icon_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_signup.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\signup.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_red_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\red_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_f_i_o_frame.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\f_i_o_frame.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_blue_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\blue_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_plusicon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\plusicon.png"
+    },
+    {
+        "merged": "com.example.fortest.app-debug-31:/layout_daily_frame.xml.flat",
+        "source": "com.example.fortest.app-main-33:/layout/daily_frame.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_daily_frame.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\daily_frame.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_camera_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\camera_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\drawable_down_icon.png.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\drawable\\down_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_receipt_add.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\receipt_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_toast_layout.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\toast_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-debug-31:\\layout_hand_add.xml.flat",
+        "source": "C:\\Users\\monky\\.gradle\\daemon\\8.9\\com.example.fortest.app-main-33:\\layout\\hand_add.xml"
+    }
+]
