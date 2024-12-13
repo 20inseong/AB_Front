@@ -13,6 +13,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
 public class LogIn extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
@@ -51,7 +54,7 @@ public class LogIn extends AppCompatActivity {
         SignUpButton();
     }
 
-    private void LogInButton(){
+    private void LogInButton() {
         Button log_in_button = findViewById(R.id.login_button);
         EditText IDInput = findViewById(R.id.ID_input);
         EditText PWInput = findViewById(R.id.password_input);
@@ -60,13 +63,39 @@ public class LogIn extends AppCompatActivity {
             String IDstring = IDInput.getText().toString();
             String PWstring = PWInput.getText().toString();
 
-            //서버에 값을 보내고, 돌아온 데이터를 통해 로그인을 하게 할 것인지 아닌지를 판별한다.
+            // Retrofit API 호출
+            ApiService apiService = RetrofitClient.getClient("http://10.0.2.2:8080/").create(ApiService.class);
+            Call<MemberResponse> call = apiService.getMemberById(IDstring);
 
-            Toast.makeText(LogIn.this,
-                    "{\"유형\":\"" + IDstring + "\""+ PWstring +"\"",
-                    Toast.LENGTH_SHORT).show();
+            call.enqueue(new retrofit2.Callback<MemberResponse>() {
+                @Override
+                public void onResponse(Call<MemberResponse> call, retrofit2.Response<MemberResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        MemberResponse member = response.body();
+
+                        // 비밀번호 검증
+                        if (member.getPassword().equals(PWstring)) {
+                            Toast.makeText(LogIn.this, "로그인 성공: " + member.getName(), Toast.LENGTH_SHORT).show();
+
+                            // 로그인 성공 후 MainActivity로 이동
+                            Intent intent = new Intent(LogIn.this, MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LogIn.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(LogIn.this, "사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<MemberResponse> call, Throwable t) {
+                    Toast.makeText(LogIn.this, "네트워크 오류: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             });
+        });
     }
+
 
     private void SignUpButton(){
         Button sign_up_button = findViewById(R.id.signup_button);
