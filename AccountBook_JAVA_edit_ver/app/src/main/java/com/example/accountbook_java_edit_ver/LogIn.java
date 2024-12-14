@@ -64,7 +64,7 @@ public class LogIn extends AppCompatActivity {
             String PWstring = PWInput.getText().toString();
 
             // Retrofit API 호출
-            ApiService apiService = RetrofitClient.getClient("http://10.0.2.2:8080/").create(ApiService.class);
+            ApiService apiService = RetrofitClient.getClient(ServerIP.SERVER_IP).create(ApiService.class);
             Call<MemberResponse> call = apiService.getMemberById(IDstring);
 
             call.enqueue(new retrofit2.Callback<MemberResponse>() {
