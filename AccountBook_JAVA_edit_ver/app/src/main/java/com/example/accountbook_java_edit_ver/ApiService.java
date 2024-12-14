@@ -1,10 +1,13 @@
 package com.example.accountbook_java_edit_ver;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -15,6 +18,12 @@ public interface ApiService {
     // 회원가입 API 정의
     @POST("members/register")  // Swagger 문서를 참고하여 경로 설정
     Call<Void> signUp(@Body MemberRequest memberRequest);
+
+//    @FormUrlEncoded
+//    @POST("api/ocr/process")
+//    Call<Void> ocr(@Field("base64Image") String base64Image, @Field("userId") String userId);
+
+
 
 //    // 캘린더 날짜
 //    @GET("api/records/monthly")

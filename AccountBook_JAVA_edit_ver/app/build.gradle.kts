@@ -49,4 +49,10 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp.logging.interceptor)
 
+    implementation("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+
+
+
 }
