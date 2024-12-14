@@ -1,7 +1,23 @@
 package com.example.accountbook_java_edit_ver;
 
+import static android.os.Environment.DIRECTORY_PICTURES;
+import static com.gun0912.tedpermission.provider.TedPermissionProvider.context;
+
+import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,19 +26,37 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.material.navigation.NavigationView;
+import androidx.exifinterface.media.ExifInterface;
 
+import com.google.android.material.navigation.NavigationView;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -33,6 +67,10 @@ public class CalendarPage extends AppCompatActivity {
     private ImageButton menuButton;
     private SidebarManager sidebarManager;
     private CalendarView calendarView;
+    private static final int REQUEST_IMAGE_CAPTURE = 672;
+    private String imageFilePath;
+    private Uri photoUri;
+    private ActivityResultLauncher<String> galleryLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +114,23 @@ public class CalendarPage extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        // 권한 체크
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            TedPermission.create()
+                    .setPermissionListener(permissionListener)
+                    .setRationaleMessage("카메라 권한이 필요합니다.")
+                    .setDeniedMessage("거부하셨습니다.")
+                    .setPermissions(android.Manifest.permission.READ_MEDIA_IMAGES, android.Manifest.permission.CAMERA)
+                    .check();
+        } else {
+            TedPermission.create()
+                    .setPermissionListener(permissionListener)
+                    .setRationaleMessage("카메라 권한이 필요합니다.")
+                    .setDeniedMessage("거부하셨습니다.")
+                    .setPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                    .check();
+        }
 
         setupButtons();
     }
@@ -243,10 +298,34 @@ public class CalendarPage extends AppCompatActivity {
                     .setItems(new CharSequence[]{"카메라", "갤러리"}, (dialog, which) -> {
                         switch (which) {
                             case 0: // 카메라 선택
-                                Toast.makeText(CalendarPage.this, "카메라 선택됨", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                if (intent.resolveActivity(getPackageManager()) != null) {
+                                    File photoFile = null;
+                                    try {
+                                        photoFile = createImageFile();
+                                    } catch (IOException e) {
+
+                                    }
+
+                                    if (photoFile != null) {
+                                        photoUri = FileProvider.getUriForFile(getApplicationContext(), getPackageName(), photoFile);
+                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+                                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                                    }
+                                }
+                                //Toast.makeText(CalendarPage.this, "카메라 선택됨", Toast.LENGTH_SHORT).show();
                                 break;
                             case 1: // 갤러리 선택
-                                Toast.makeText(CalendarPage.this, "갤러리 선택됨", Toast.LENGTH_SHORT).show();
+                                galleryLauncher.launch("image/*");
+
+                                galleryLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(),
+                                        uri -> {
+                                            if (uri != null) {
+                                                // 선택된 이미지 처리
+                                                handleSelectedImage(uri);
+                                            }
+                                        });
+                                //Toast.makeText(CalendarPage.this, "갤러리 선택됨", Toast.LENGTH_SHORT).show();
                                 break;
                         }
                     })
@@ -362,4 +441,187 @@ public class CalendarPage extends AppCompatActivity {
         float density = getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
     }
+
+    private void handleSelectedImage(Uri uri) {
+        // 선택된 이미지 화면에 표시
+        //((ImageView) findViewById(R.id.imageView)).setImageURI(uri);
+
+        // 이미지를 비트맵으로 변환
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if (bitmap != null) {
+            // OCR 처리 등 추가 작업
+            new UploadImageTask().execute(bitmap);
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "TEST_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,
+                ".jpeg",
+                storageDir
+        );
+        imageFilePath = image.getAbsolutePath();
+        return image;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
+            ExifInterface exif = null;
+
+            try {
+                exif = new ExifInterface(imageFilePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            int exifOrientation;
+            int exifDegree;
+
+            if (exif != null) {
+                exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+                exifDegree = exifOrientationToDegress(exifOrientation);
+            } else {
+                exifDegree = 0;
+            }
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HHmmss", Locale.getDefault());
+            Date curDate = new Date(System.currentTimeMillis());
+            String filename = formatter.format(curDate);
+
+            String strFolderName = Environment.getExternalStoragePublicDirectory(DIRECTORY_PICTURES) + File.separator + "MEDIKOK" + File.separator;
+            File file = new File(strFolderName);
+            if (!file.exists())
+                file.mkdirs();
+
+            File f = new File(strFolderName + "/" + filename + ".jpeg");
+
+            FileOutputStream fOut = null;
+            try {
+                fOut = new FileOutputStream(f);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            Bitmap bitImage;
+            bitImage = rotate(bitmap, exifDegree);
+            //이미지 저장
+            bitImage.compress(Bitmap.CompressFormat.JPEG, 70, fOut);
+
+            try {
+                fOut.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fOut.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //화면에 찍은 이미지 표시
+            //((ImageView) findViewById(R.id.imageView)).setImageBitmap(bitImage);
+            MediaScannerConnection.scanFile(context, new String[]{f.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                @Override
+                public void onScanCompleted(String path, Uri uri) {
+                    Log.i("ExternalStorage", "Scanned " + path + ":");
+                    Log.i("ExternalStorage", "-> uri=" + uri);
+                }
+            });
+            new UploadImageTask().execute(bitImage);
+        }
+    }
+
+    private int exifOrientationToDegress(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
+            return 90;
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {
+            return 180;
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
+            return 270;
+        }
+        return 0;
+    }
+
+    private Bitmap rotate(Bitmap bitmap, float degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
+    PermissionListener permissionListener = new PermissionListener() {
+        @Override
+        public void onPermissionGranted() {
+            Toast.makeText(getApplicationContext(), "권한이 허용됨", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onPermissionDenied(List<String> List) {
+            Toast.makeText(getApplicationContext(), "권한이 거부됨", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private static class UploadImageTask extends AsyncTask<Bitmap, Void, String> {
+        @Override
+        protected String doInBackground(Bitmap... bitmaps) {
+            Bitmap bitmap = bitmaps[0];
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] imageBytes = byteArrayOutputStream.toByteArray();
+            String base64Image = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
+
+            String user_id = "parksuga2001";    //예시 id, 여기에 로그인 시 사용한 아이디 들어갈 예정, 일단 고정 값
+            String server_ip = "http://" + ServerIP.SERVER_IP + ":8080/api/ocr/process";
+
+
+            // 스프링 부트 서버로 이미지를 전송하는 코드 작성
+            try {
+                //여기서 스프링 부트 서버의 saveImage로 경로를 정해준 것임, 이건 spring boot 서버 완성하면 바뀔 예정
+                URL url = new URL(server_ip);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                Log.d("AddImage", "URL 이용");
+                conn.setRequestMethod("POST");  //POST형식
+                conn.setRequestProperty("Content-Type", "application/json; utf-8");
+                conn.setRequestProperty("Accept", "application/json");
+                conn.setDoOutput(true);
+
+                //이게 보내는 내용 : \"image\":\"" + base64Image
+                //String 형식으로 key + 데이터 조합 맞춰서 보내면 됩니다 :)
+                //쭉 이어붙여도, backend에서 key로 구분할 수 있어서, 필요한 데이터 저런식으로 보내면 됨.
+                String jsonInputString = "{\"image\":\"" + base64Image + "\", \"user_id\":\"" + user_id + "\"}";
+
+                //서버로 전송
+                try (OutputStream os = conn.getOutputStream()) {
+                    byte[] input = jsonInputString.getBytes("utf-8");
+                    os.write(input, 0, input.length);
+                }
+
+                int code = conn.getResponseCode();
+                if (code == 200) {
+                    Log.d("AddImage", "성공");
+                    return "Image uploaded successfully";
+                } else {
+                    Log.d("AddImage", code + " : 실패 코드");
+                    return "Failed to upload image: " + code;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("AddImage", "오류");
+                return "Exception: " + e.getMessage();
+            }
+        }
+    }
+
 }
