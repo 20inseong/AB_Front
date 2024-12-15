@@ -49,4 +49,7 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp.logging.interceptor)
 
+    implementation(libs.tedpermission)
+    implementation(libs.exifinterface)
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
 }

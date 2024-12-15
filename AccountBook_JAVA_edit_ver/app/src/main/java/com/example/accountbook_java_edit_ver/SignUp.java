@@ -39,7 +39,7 @@ public class SignUp extends AppCompatActivity {
             if (password.equals(confirm_password)) {
                 // Retrofit API 호출
                 MemberRequest memberRequest = new MemberRequest(real_name, username, password, email);
-                ApiService apiService = RetrofitClient.getClient("http://10.0.2.2:8080/").create(ApiService.class);
+                ApiService apiService = RetrofitClient.getClient(ServerIP.SERVER_IP).create(ApiService.class);
 
                 Call<Void> call = apiService.signUp(memberRequest);
                 call.enqueue(new Callback<Void>() {

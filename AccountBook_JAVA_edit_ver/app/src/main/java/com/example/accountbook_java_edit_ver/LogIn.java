@@ -63,33 +63,41 @@ public class LogIn extends AppCompatActivity {
             String IDstring = IDInput.getText().toString();
             String PWstring = PWInput.getText().toString();
 
+            if (IDstring.isEmpty() || PWstring.isEmpty()) {
+                Toast.makeText(LogIn.this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             // Retrofit API 호출
-            ApiService apiService = RetrofitClient.getClient("http://10.0.2.2:8080/").create(ApiService.class);
-            Call<MemberResponse> call = apiService.getMemberById(IDstring);
+            ApiService apiService = RetrofitClient.getClient(ServerIP.SERVER_IP).create(ApiService.class);
+            LoginRequest loginRequest = new LoginRequest(IDstring, PWstring);
 
-            call.enqueue(new retrofit2.Callback<MemberResponse>() {
+            Call<String> call = apiService.login(loginRequest);
+
+            call.enqueue(new retrofit2.Callback<String>() {
                 @Override
-                public void onResponse(Call<MemberResponse> call, retrofit2.Response<MemberResponse> response) {
+                public void onResponse(Call<String> call, retrofit2.Response<String> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        MemberResponse member = response.body();
+                        String token = response.body(); // JWT 토큰 받기
+                        Toast.makeText(LogIn.this, "로그인 성공: " + token, Toast.LENGTH_SHORT).show();
 
-                        // 비밀번호 검증
-                        if (member.getPassword().equals(PWstring)) {
-                            Toast.makeText(LogIn.this, "로그인 성공: " + member.getName(), Toast.LENGTH_SHORT).show();
+                        // 로그인 ID 저장 (토큰이 필요할 경우 저장 가능)
+                        saveUserId(IDstring);
 
-                            // 로그인 성공 후 MainActivity로 이동
-                            Intent intent = new Intent(LogIn.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(LogIn.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                        }
+                        // 토큰 저장 (옵션)
+                        saveToken(token);
+
+                        // MainActivity로 이동
+                        Intent intent = new Intent(LogIn.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
-                        Toast.makeText(LogIn.this, "사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LogIn.this, "아이디 또는 비밀번호가 잘못되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<MemberResponse> call, Throwable t) {
+                public void onFailure(Call<String> call, Throwable t) {
                     Toast.makeText(LogIn.this, "네트워크 오류: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
@@ -105,4 +113,14 @@ public class LogIn extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    private void saveUserId(String userId) {
+        SharedPreferencesUtils.saveUserId(this, userId); // 유틸리티 클래스 사용
+    }
+
+    // JWT 토큰 저장 메서드
+    private void saveToken(String token) {
+        SharedPreferencesUtils.saveToken(this, token); // 토큰 저장 유틸리티 사용
+    }
+
 }
